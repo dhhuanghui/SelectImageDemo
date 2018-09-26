@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 /**
  * Created by dh on 2018/9/19.
  */
-class PictureAdapter(private val context: Context, private val mDataList: ArrayList<ImageItem>) : BaseAdapter() {
+class PictureAdapter(private val context: Context, private val mDataList: ArrayList<ImageItem>, private var itemClickListener: IOnItemClickListener<ImageItem>) : BaseAdapter() {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         var convertView = convertView
@@ -23,6 +23,9 @@ class PictureAdapter(private val context: Context, private val mDataList: ArrayL
             holder.ivImage = convertView!!.findViewById<View>(R.id.thumb_show_item_icon) as ImageView
             holder.ivSelected = convertView.findViewById<View>(R.id.iv_icon_data_selected) as ImageView
             convertView.tag = holder
+            holder.ivImage!!.setOnClickListener({
+                itemClickListener.onItemClick(mDataList[position]);
+            })
         } else {
             holder = convertView.tag as ViewHolder
         }

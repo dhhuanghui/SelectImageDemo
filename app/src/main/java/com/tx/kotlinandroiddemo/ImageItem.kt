@@ -1,5 +1,7 @@
 package com.tx.kotlinandroiddemo
 
+import java.io.Serializable
+
 /**
  * Created by dh on 2018/9/19.
  */
